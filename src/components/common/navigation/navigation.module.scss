@@ -1,0 +1,45 @@
+.navigation {
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 36px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--darker-color);
+    font: var(--base-font);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 4px;
+      background-color: var(--accent-color);
+      transition: var(--base-time);
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &_active {
+      font-weight: bold;
+    }
+  }
+
+  &__part {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+}
