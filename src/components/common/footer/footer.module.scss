@@ -11,8 +11,8 @@
   }
 
   &__part {
-    padding-top: 92px;
-    padding-bottom: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     padding-left: 64px;
     padding-right: 64px;
     display: flex;
@@ -38,7 +38,7 @@
   &__navigation {
     display: flex;
     gap: 24px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     justify-content: center;
 
     a {
