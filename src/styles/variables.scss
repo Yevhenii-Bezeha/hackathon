@@ -1,10 +1,12 @@
 :root {
-  --accent-font: 'Shadows Into Light', cursive;
-  --base-font-family: 'Lora', serif;
-  --gutter: 20px;
-  --accent-color: gold;
-  --light-color: #ccc;
-  --lighter-color: #fff;
+  --accent-font-family: 'Shadows Into Light', cursive;
+  --base-font-family: 'DM Sans', sans-serif;
+  --base-font: 400 16px var(var(--base-font-family));
+  --accent-color: #fed530;
+  --light-color: #808080;
+  --lighter-color: #ccc;
+  --contrast-light-color: #fff;
   --dark-color: #2e2e2e;
-  --darker-color: #000;
+  --darker-color: #1e1e1e;
+  --base-time: 0.2s;
 }
