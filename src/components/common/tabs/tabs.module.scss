@@ -1,0 +1,22 @@
+.tabs {
+  border-radius: 5px;
+  transition: var(--base-time);
+
+  &__navigation {
+    display: flex;
+  }
+
+  &__link {
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    display: block;
+    border-right: 1px solid var(--dark-color);
+    font: 400 16px var(--base-font-family);
+    padding: 10px;
+    color: var(--darker-color);
+
+    &_active {
+      font-weight: 700;
+    }
+  }
+}
