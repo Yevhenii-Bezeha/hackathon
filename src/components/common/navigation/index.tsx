@@ -10,7 +10,9 @@ const Navigation = (): JSX.Element => {
     <nav className={styles.navigation}>
       <div className={clsx('container', styles.navigation__container)}>
         <div className={styles.navigation__part}>
-          <Logo />
+          <NavLink to={Routes.ROOT}>
+            <Logo />
+          </NavLink>
           <NavLink
             to={Routes.ROOT}
             className={styles.navigation__link}
