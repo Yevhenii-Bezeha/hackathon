@@ -24,7 +24,7 @@ const Footer = (): JSX.Element => {
       <div className={styles.footer__part}>
         <div className={styles.footer__container}>
           <nav className={styles.footer__navigation}>
-            <NavLink to={Routes.ROOT}>Home</NavLink>
+            <NavLink to={Routes.HOME}>Home</NavLink>
             <NavLink to={Routes.ALL}>Pokemons</NavLink>
             <NavLink to={Routes.ABOUT}>About</NavLink>
           </nav>

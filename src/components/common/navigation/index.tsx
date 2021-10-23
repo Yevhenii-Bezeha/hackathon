@@ -10,11 +10,11 @@ const Navigation = (): JSX.Element => {
     <nav className={styles.navigation}>
       <div className={clsx('container', styles.navigation__container)}>
         <div className={styles.navigation__part}>
-          <NavLink to={Routes.ROOT}>
+          <NavLink to={Routes.HOME}>
             <Logo />
           </NavLink>
           <NavLink
-            to={Routes.ROOT}
+            to={Routes.HOME}
             className={styles.navigation__link}
             activeClassName={styles.navigation__link_active}
           >
@@ -38,7 +38,7 @@ const Navigation = (): JSX.Element => {
 
         <div className={styles.navigation__part}>
           <NavLink
-            to={Routes.LOGIN}
+            to={Routes.SIGN_IN}
             className={styles.navigation__link}
             activeClassName={styles.navigation__link_active}
           >
