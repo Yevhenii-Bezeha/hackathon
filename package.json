@@ -40,10 +40,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stylelint:check": "stylelint ***/**/*.{scss,sass}",
+    "stylelint": "stylelint ***/**/*.{scss,sass}",
     "stylelint:fix": "stylelint --fix ***/**/*.scss",
-    "jslint:check": "eslint . --ext ts,tsx",
-    "jslint:fix": "eslint --fix . --ext ts,tsx"
+    "jslint": "eslint . --ext ts,tsx",
+    "jslint:fix": "eslint --fix . --ext ts,tsx",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "browserslist": {
     "production": [
@@ -64,12 +66,14 @@
     "eslint-plugin-react": "^7.26.1",
     "husky": "^7.0.2",
     "lint-staged": "^11.2.3",
+    "prettier": "^2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-high-performance-animation": "^1.5.2",
     "stylelint-scss": "^3.21.0"
   },
   "lint-staged": {
+    "*.*": "npm run format:fix",
     "*.{ts,tsx}": "npm run jslint:fix",
     "*.{scss,sass}": "npm run stylelint:fix"
   }
