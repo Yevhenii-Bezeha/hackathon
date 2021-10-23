@@ -12,6 +12,9 @@ const Footer = (): JSX.Element => {
       <div className={styles.footer__part}>
         <div className={styles.footer__container}>
           <Logo className={styles.footer__logo} />
+          <div className={styles.footer__description}>
+            <p>Best resourse for pokemoning ever!</p>
+          </div>
         </div>
       </div>
       <div className={styles.footer__part}>
