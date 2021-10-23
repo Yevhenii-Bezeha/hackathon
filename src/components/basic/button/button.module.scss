@@ -1,0 +1,15 @@
+@import 'styles/variables';
+
+.button {
+  border: 1px var(--accent-color) solid;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--base-time);
+
+  &:hover,
+  &:focus {
+    background-color: darken($accent-color, 10%);
+  }
+}

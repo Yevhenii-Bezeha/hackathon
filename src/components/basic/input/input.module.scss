@@ -1,0 +1,20 @@
+.input {
+  background-color: var(--input-color);
+  color: var(--darker-color);
+  display: block;
+  min-width: 300px;
+  padding: 10px;
+  outline: transparent;
+  resize: none;
+  border-radius: 5px;
+  border: 1px solid var(--dark-color);
+  transition: var(--base-time);
+
+  &::placeholder {
+    color: var(--light-color);
+  }
+
+  &:focus {
+    border: 2px var(--accent-color) solid;
+  }
+}
