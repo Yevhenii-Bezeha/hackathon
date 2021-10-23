@@ -5,7 +5,7 @@ import { IPokemonState } from './state';
 import initialState from './state';
 
 const reducer = createReducer<IPokemonState>(initialState, {
-  [actionsTypes.GET_POKEMON]: (state, action: ReturnType<typeof actions.getPokemon>) => {
+  [actionsTypes.GET_POKEMON]: (state) => {
     return { ...state, hasFetched: false };
   },
   [actionsTypes.SET_POKEMON]: (state, { payload }: ReturnType<typeof actions.setPokemon>) => {
