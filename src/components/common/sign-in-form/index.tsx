@@ -4,12 +4,12 @@ import { Button, Input } from 'components';
 import { ICredentials } from 'types';
 import styles from './signin-form.module.scss';
 
-type TSignupFormProps = {
+type TSignInFormProps = {
   onSubmit: (credentials: ICredentials) => void;
   className?: string;
 };
 
-const SignupFrom = ({ onSubmit, className }: TSignupFormProps): JSX.Element => {
+const SignInFrom = ({ onSubmit, className }: TSignInFormProps): JSX.Element => {
   const [credentials, setCredentials] = useState<ICredentials>({
     login: '',
     password: '',
@@ -43,4 +43,4 @@ const SignupFrom = ({ onSubmit, className }: TSignupFormProps): JSX.Element => {
   );
 };
 
-export default SignupFrom;
+export default SignInFrom;
