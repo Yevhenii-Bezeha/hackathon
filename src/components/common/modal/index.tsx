@@ -5,7 +5,7 @@ type TModalProps = {
   children: ReactNode;
 };
 
-const Modal = ({ children }: TModalProps) => {
+const Modal = ({ children }: TModalProps): JSX.Element => {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>{children}</div>
