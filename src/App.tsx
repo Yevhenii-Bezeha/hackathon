@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import { Router } from 'containers';
+import 'styles/index.scss';
 
 function App(): JSX.Element {
   return (
