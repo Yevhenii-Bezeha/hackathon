@@ -8,4 +8,10 @@
     grid-auto-rows: 560px;
     gap: 16px;
   }
+
+  &__title {
+    width: 100%;
+    display: block;
+    font: 700 42px var(--base-font-family);
+  }
 }
