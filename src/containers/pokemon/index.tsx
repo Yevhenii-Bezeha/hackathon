@@ -1,13 +1,30 @@
-import React from 'react';
-import { Redirect } from 'react-router';
+import React, { useEffect } from 'react';
+import { Redirect, useParams } from 'react-router';
 import { Routes } from 'common';
-import { useAppSelector } from 'store';
-import { Pokemon as PokemonPage } from 'components';
+import { useAppDispatch, useAppSelector } from 'store';
+import { PokemonPage, Loader } from 'components';
+import { getPokemon } from './logic/actions';
 
-const Pokemon = (): JSX.Element => {
+const PokemonContainer = (): JSX.Element => {
+  const { id } = useParams<{ id: string }>();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getPokemon({ id }));
+  }, []);
+
   const pokemon = useAppSelector((state) => state.pokemon.item);
+  const hasFeched = useAppSelector((state) => state.pokemon.item);
 
-  return pokemon ? <PokemonPage pokemon={pokemon} /> : <Redirect to={Routes.NOT_FOUND} />;
+  return hasFeched ? (
+    pokemon ? (
+      <PokemonPage pokemon={pokemon} />
+    ) : (
+      <Redirect to={Routes.NOT_FOUND} />
+    )
+  ) : (
+    <Loader />
+  );
 };
 
-export default Pokemon;
+export default PokemonContainer;

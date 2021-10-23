@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Routes } from 'common';
-import { Pokemon } from 'containers';
+import { PokemonContainer, PokemonsContainer } from 'containers';
 
 const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path={Routes.ROOT} exact></Route>
-        <Route path={Routes.ALL} exact></Route>
+        <Route path={Routes.ALL} exact>
+          <PokemonsContainer />
+        </Route>
         <Route path={Routes.ONE} exact>
-          <Pokemon />
+          <PokemonContainer />
         </Route>
       </Switch>
     </BrowserRouter>

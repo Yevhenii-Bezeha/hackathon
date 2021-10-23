@@ -4,19 +4,24 @@ import * as actions from './actions';
 import { IPokemon } from 'types';
 
 const a = (id: string) => {
-  return {
-    name: 'string',
-    ability: 'string',
-    photo: 'string',
-  };
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        id,
+        name: 'string',
+        ability: 'string',
+        photo: ',',
+      });
+    }, 5000);
+  });
 };
 
 function* getPokemonWorker({ payload: { id } }: ReturnType<typeof actions.getPokemon>) {
   try {
     const pokemon: IPokemon = yield call(a, id);
     yield put(actions.setPokemon({ pokemon }));
-  } catch (error) {
-    console.error(error);
+  } catch (error: unknown) {
+    yield put(actions.setError({ error: { message: 'Pokemon not found' } }));
   }
 }
 

@@ -1,15 +1,15 @@
 import { createReducer } from '@reduxjs/toolkit';
 import * as actionsTypes from './actions-types';
 import * as actions from './actions';
-import { IPokemonState } from './state';
+import { IPokemonsState } from './state';
 import initialState from './state';
 
-const reducer = createReducer<IPokemonState>(initialState, {
-  [actionsTypes.GET_POKEMON]: (state, action: ReturnType<typeof actions.getPokemon>) => {
+const reducer = createReducer<IPokemonsState>(initialState, {
+  [actionsTypes.GET_POKEMONS]: (state) => {
     return { ...state, hasFetched: false };
   },
-  [actionsTypes.SET_POKEMON]: (state, { payload }: ReturnType<typeof actions.setPokemon>) => {
-    return { ...state, item: payload.pokemon, hasFetched: true };
+  [actionsTypes.SET_POKEMONS]: (state, { payload }: ReturnType<typeof actions.setPokemons>) => {
+    return { ...state, items: payload.pokemons, hasFetched: true };
   },
   [actionsTypes.SET_ERROR]: (state, { payload }: ReturnType<typeof actions.setError>) => {
     return { ...state, error: payload.error, hasFetched: true };

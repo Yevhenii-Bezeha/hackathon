@@ -1,13 +1,13 @@
 import { IPokemon, IError } from 'types';
 
-export interface IPokemonState {
-  item: IPokemon | null;
+export interface IPokemonsState {
+  items: IPokemon[] | null;
   hasFetched: boolean;
   error: IError | null;
 }
 
-const initialState: IPokemonState = {
-  item: null,
+const initialState: IPokemonsState = {
+  items: null,
   hasFetched: false,
   error: null,
 };
