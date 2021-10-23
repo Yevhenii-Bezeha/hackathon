@@ -1,7 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Routes } from 'common';
-import { PokemonContainer, PokemonsContainer, SignInContainer, SignOutContainer, HomeContainer } from 'containers';
+import {
+  PokemonContainer,
+  PokemonsContainer,
+  SignInContainer,
+  SignOutContainer,
+  HomeContainer,
+  UserContainer,
+} from 'containers';
 const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
@@ -16,7 +23,8 @@ const Router = (): JSX.Element => {
           <PokemonContainer />
         </Route>
         <Route path={Routes.SIGN_IN} exact>
-          <SignInContainer />
+          {/* <SignInContainer /> */}
+          <UserContainer />
         </Route>
         <Route path={Routes.SIGN_OUT} exact>
           <SignOutContainer />
