@@ -3,8 +3,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-image:
-    linear-gradient(rgba(65, 65, 75, 0.85), rgba(0, 0, 0, 0.85)),
-    url('./../../../assets/images/homeImg.jpg');
+    linear-gradient(
+      rgba(var(--light-color-rgb), 0.85),
+      rgba(var(--darker-color-rgb), 0.85)
+    ),
+    url('/assets/images/pokemons.jpg');
 
   &__description {
     padding: 50px;
@@ -29,6 +32,12 @@
       font: 700 24px var(--base-font-family);
       color: var(--lighter-color);
       line-height: 2;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      &:not(:last-of-type) {
+        margin-bottom: 20px;
+      }
     }
   }
 }
