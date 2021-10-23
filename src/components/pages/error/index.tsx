@@ -6,7 +6,7 @@ type TErrorProps = {
   message: string;
 };
 
-const ErrorPage = ({ message, status = 500 }: TErrorProps) => {
+const ErrorPage = ({ message, status = 500 }: TErrorProps): JSX.Element => {
   return (
     <div className={styles.error}>
       <div className={styles.error__container}>
