@@ -12,7 +12,7 @@ const Pokemon = ({ pokemon }: TPokemonProps): JSX.Element => {
   return (
     <div>
       <Navigation />
-      <main className={styles.main}>
+      <main className={clsx('main', styles.main)}>
         <div className={clsx('container', styles.main__container)}>
           <div className={styles.main__image}>
             <img src={pokemon.photo} alt={pokemon.name} />
