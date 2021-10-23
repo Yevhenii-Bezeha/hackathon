@@ -1,10 +1,10 @@
 const Routes = {
-  ROOT: '/',
+  HOME: '/',
   ALL: '/all',
   ONE: '/all/:id',
   ABOUT: '/about',
-  LOGIN: '/login',
-  LOGOUT: '/logout',
+  SIGN_IN: '/sign-in',
+  SIGN_OUT: '/sign-out',
   PROFILE: '/profile',
   NOT_FOUND: '/404',
 };
