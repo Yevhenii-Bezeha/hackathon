@@ -1,11 +1,9 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 
-function App() {
-  return (
-    <div>
-      <h1>App</h1>
-    </div>
-  );
+function App(): JSX.Element {
+  return <Provider store={store}></Provider>;
 }
 
 export default App;
