@@ -12,13 +12,6 @@ const Footer = (): JSX.Element => {
       <div className={styles.footer__part}>
         <div className={styles.footer__container}>
           <Logo className={styles.footer__logo} />
-          <div className={styles.footer__description}>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Et optio quaerat ratione
-              recusandae in. Culpa obcaecati, officia molestiae cumque corporis, accusamus
-              repudiandae eius praesentium quaerat unde, sapiente distinctio tempore neque!
-            </p>
-          </div>
         </div>
       </div>
       <div className={styles.footer__part}>
