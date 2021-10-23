@@ -1,0 +1,13 @@
+.main {
+  display: grid;
+
+  &__container {
+    height: 100%;
+    display: flex;
+  }
+
+  &__title {
+    margin: auto;
+    font: 700 72px var(--base-font-family);
+  }
+}
