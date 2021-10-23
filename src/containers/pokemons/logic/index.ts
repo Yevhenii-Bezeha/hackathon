@@ -14,6 +14,12 @@ const reducer = createReducer<IPokemonsState>(initialState, {
   [actionsTypes.SET_ERROR]: (state, { payload }: ReturnType<typeof actions.setError>) => {
     return { ...state, error: payload.error, hasFetched: true };
   },
+  [actionsTypes.INCREMENT_PAGE]: (state) => {
+    return { ...state, page: state.page + 1 };
+  },
+  [actionsTypes.SET_PAGE]: (state, { payload }: ReturnType<typeof actions.setPage>) => {
+    return { ...state, page: payload.page };
+  },
 });
 
 export default reducer;
