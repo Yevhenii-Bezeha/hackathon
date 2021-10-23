@@ -1,7 +1,15 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Routes } from 'common';
-import { PokemonContainer, PokemonsContainer, SignInContainer, SignOutContainer, HomeContainer } from 'containers';
+import {
+  PokemonContainer,
+  PokemonsContainer,
+  SignInContainer,
+  SignOutContainer,
+  HomeContainer,
+  NotFoundContainer,
+} from 'containers';
+
 const Router = (): JSX.Element => {
   return (
     <BrowserRouter>
@@ -20,6 +28,12 @@ const Router = (): JSX.Element => {
         </Route>
         <Route path={Routes.SIGN_OUT} exact>
           <SignOutContainer />
+        </Route>
+        <Route path={Routes.NOT_FOUND} exact>
+          <NotFoundContainer />
+        </Route>
+        <Route path="*">
+          <Redirect to={Routes.NOT_FOUND} />
         </Route>
       </Switch>
     </BrowserRouter>
