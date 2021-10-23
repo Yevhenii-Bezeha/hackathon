@@ -7,15 +7,13 @@ import IRootState from './state';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware = (getDefaultMiddleware: any) => [
-  ...getDefaultMiddleware({
-    thunk: false,
-  }),
-  sagaMiddleware,
-];
-
 const store = configureStore({
-  middleware,
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware({
+      thunk: false,
+    }),
+    sagaMiddleware,
+  ],
   reducer,
 });
 
