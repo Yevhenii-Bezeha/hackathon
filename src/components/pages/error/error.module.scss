@@ -1,0 +1,22 @@
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  &__container {
+    text-align: center;
+    margin: auto;
+  }
+
+  &__status {
+    margin-top: 0;
+    font: 700 122px var(--base-font-family);
+    color: var(--darker-color);
+    margin-bottom: 30px;
+  }
+
+  &__message {
+    font: 700 22px var(--base-font-family);
+    color: var(--darker-color);
+  }
+}
