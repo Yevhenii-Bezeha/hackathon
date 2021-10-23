@@ -6,6 +6,7 @@ const Routes = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   PROFILE: '/profile',
+  NOT_FOUND: '/404',
 };
 
 export default Routes;
