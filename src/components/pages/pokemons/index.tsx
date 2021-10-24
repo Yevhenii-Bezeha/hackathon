@@ -52,12 +52,14 @@ const PokemonsPage = ({
   };
 
   const getFilteredContacts = () => {
-    if (filterStr === '') {
+    if (filterStr.trim() === '') {
       return pokemons;
     }
+
     const filteredPokemos = pokemons.filter((pokemon) =>
       pokemon.name.toLowerCase().includes(filterStr.toLowerCase()),
     );
+
     return filteredPokemos.length === 0 ? pokemons : filteredPokemos;
   };
 
