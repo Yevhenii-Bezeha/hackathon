@@ -38,7 +38,10 @@ const PokemonsPage = ({
   const onClickHandle = () => {
     setIsOpen(true);
   };
-
+  const onCreatePokemon = (e: any) => {
+    onCreate(e)
+    setIsOpen(false)
+  };
   const onEsc = (event: KeyboardEvent) => {
     if (event.code === 'Escape') {
       setIsOpen(false);
@@ -102,7 +105,7 @@ const PokemonsPage = ({
       <Footer />
       {isOpen && (
         <Modal onEsc={onEsc} onBackdropClick={onBackdropClick}>
-          <AddPokemonForm onSubmit={onCreate} />
+          <AddPokemonForm onSubmit={onCreatePokemon} />
         </Modal>
       )}
     </div>
