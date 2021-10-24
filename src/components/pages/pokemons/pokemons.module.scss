@@ -15,3 +15,14 @@
     font: 700 42px var(--base-font-family);
   }
 }
+
+.buttonBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  height: 100px;
+  width: 100px;
+}

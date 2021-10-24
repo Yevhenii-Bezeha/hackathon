@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Footer, Navigation, Pokemon } from 'components';
+import { AddPokemonForm, Button, Footer, Modal, Navigation, Pokemon } from 'components';
 import { IPokemon } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type TPokemonsProps = {
   pokemons: IPokemon[];
@@ -13,9 +15,27 @@ type TPokemonsProps = {
 };
 
 const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const onLoadMoreHandler = () => {
     if (onLoadMore) {
       onLoadMore();
+    }
+  };
+
+  const onClickHandle = () => {
+    setIsOpen(true);
+  };
+
+  const onEsc = (event: any) => {
+    if (event.code === 'Escape') {
+      setIsOpen(false);
+    }
+  };
+
+  const onBackdropClick = (event: any) => {
+    if (event.target === event.currentTarget) {
+      setIsOpen(false);
     }
   };
 
@@ -30,12 +50,22 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
           next={onLoadMoreHandler}
           className={clsx('container', styles.main__container)}
         >
+          <div className={styles.buttonBox} onClick={onClickHandle}>
+            <Button className={styles.button}>
+              <FontAwesomeIcon icon={faPlus} />
+            </Button>
+          </div>
           {pokemons.map((pokemon) => (
             <Pokemon pokemon={pokemon} link={`${Routes.ALL}/${pokemon.id}`} key={pokemon.id} />
           ))}
         </InfiniteScroll>
       </main>
       <Footer />
+      {isOpen && (
+        <Modal onEsc={onEsc} onBackdropClick={onBackdropClick}>
+          <AddPokemonForm />
+        </Modal>
+      )}
     </div>
   );
 };
