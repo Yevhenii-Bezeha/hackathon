@@ -1,0 +1,38 @@
+@import 'styles/variables';
+
+.button {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: var(--base-font);
+  color: var(--darker-color);
+}
+
+.input {
+  display: none;
+}
+
+// .input::-webkit-file-upload-button {
+//   visibility: hidden;
+// }
+// .input::before {
+//   margin-left: 65px;
+//   text-align: center;
+//   width: 150px;
+//   content: 'Select a picture';
+//   display: block;
+//   background-color: var(--accent-color);
+//   border: 1px solid #999;
+//   border-radius: 5px;
+//   padding: 5px 8px;
+//   outline: none;
+//   cursor: pointer;
+//   text-shadow: 1px 1px var(--contrast-light-color);
+//   font-weight: 700;
+//   font-size: 10pt;
+// }
+// .input:hover::before {
+//   border-color: black;
+//   background-color: darken($accent-color, 10%);
+// }
