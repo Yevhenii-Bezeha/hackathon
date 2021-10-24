@@ -3,6 +3,8 @@ import styles from './modal.module.scss';
 
 type TModalProps = {
   children: ReactNode;
+  // onEsc: () => void;
+  // onBackdropClick: () => void;
 };
 
 const Modal = ({ children }: TModalProps): JSX.Element => {
