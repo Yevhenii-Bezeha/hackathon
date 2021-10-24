@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from 'store';
-import { IPokemon } from 'types';
+import { INewPokemon, IPokemon } from 'types';
 import { PokemonsPage, ErrorPage, Loader } from 'components';
-import { getPokemons, incrementPage } from './logic/actions';
+import { createPokemon, getPokemons, incrementPage } from './logic/actions';
 import { createFile } from 'helpers';
 import { EXPORT_FILE_NAME } from 'common';
 
@@ -32,6 +32,10 @@ const PokemonsContainer = (): JSX.Element => {
     }
   };
 
+  const onCreate = (pokemon: INewPokemon) => {
+    dispatch(createPokemon({ pokemon }));
+  };
+
   const onExport = () => {
     if (allPokemons) {
       createFile(JSON.stringify(allPokemons), EXPORT_FILE_NAME);
@@ -48,6 +52,7 @@ const PokemonsContainer = (): JSX.Element => {
         pokemonsNumber={allPokemons.length}
         onLoadMore={onLoadMore}
         onExport={onExport}
+        onCreate={onCreate}
       />
     ) : (
       <ErrorPage message="Pokemons error." />

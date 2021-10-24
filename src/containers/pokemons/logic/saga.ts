@@ -24,8 +24,29 @@ function* getPokemonsWatcher() {
   yield takeEvery(actionsTypes.GET_POKEMONS, getPokemonsWorker);
 }
 
+function* createPokemonWorker({
+  payload: { pokemon: newPokemon },
+}: ReturnType<typeof actions.createPokemon>) {
+  try {
+    const pokemon: IPokemon = yield call(PokemonsService.create, newPokemon);
+    yield put(actions.addPokemons({ pokemons: [pokemon] }));
+  } catch (error: any) {
+    yield put(
+      actions.setError({
+        error: {
+          message: error || 'Pokemons error',
+        },
+      }),
+    );
+  }
+}
+
+function* createPokemonsWatcher() {
+  yield takeEvery(actionsTypes.CREATE_POKEMON, createPokemonWorker);
+}
+
 function* saga() {
-  yield all([getPokemonsWatcher()]);
+  yield all([getPokemonsWatcher(), createPokemonsWatcher()]);
 }
 
 export default saga;

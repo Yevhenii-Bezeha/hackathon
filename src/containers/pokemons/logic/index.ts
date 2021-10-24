@@ -20,6 +20,9 @@ const reducer = createReducer<IPokemonsState>(initialState, {
   [actionsTypes.SET_PAGE]: (state, { payload }: ReturnType<typeof actions.setPage>) => {
     return { ...state, page: payload.page };
   },
+  [actionsTypes.ADD_POKEMONS]: (state, { payload }: ReturnType<typeof actions.addPokemons>) => {
+    return { ...state, items: [...(state.items ? state.items : []), ...payload.pokemons] };
+  },
 });
 
 export default reducer;

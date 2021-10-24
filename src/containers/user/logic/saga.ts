@@ -7,6 +7,7 @@ import { AuthService } from 'services';
 function* signInWorker({ payload: { credentials } }: ReturnType<typeof actions.signIn>) {
   try {
     const user: IUser = yield call(AuthService.signIn, credentials);
+    localStorage.setItem('user', JSON.stringify(user));
     yield put(actions.setUser({ user }));
   } catch (error) {
     yield put(actions.setError({ error: { message: 'Wrong data.' } }));

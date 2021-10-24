@@ -1,8 +1,5 @@
 import qs from 'qs';
 import { API_ROOT, HttpMethods } from 'common';
-//import { useAppSelector } from 'store';
-
-const token = ''; // useAppSelector((state) => state.user.item?.token);
 
 type TBody = any;
 
@@ -34,7 +31,7 @@ const getArgs = (args: IRequestArgs): RequestInit => {
   const headers: THeader = {};
   let body: TBody | null = null;
 
-  headers['x-access-token'] = token || '';
+  headers['x-access-token'] = JSON.parse(localStorage.getItem('user') || '{}')?.token;
 
   if (args.body) {
     if (args.method === 'GET') {

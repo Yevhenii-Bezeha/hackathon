@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button, FileInput, Input } from 'components';
 import { INewPokemon } from 'types';
@@ -6,17 +6,19 @@ import styles from './add-pokemon-form.module.scss';
 
 type TSignInFormProps = {
   className?: string;
+  onSubmit: (pokemon: INewPokemon) => void;
 };
 
-const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
+const AddPokemonForm = ({ className, onSubmit }: TSignInFormProps): JSX.Element => {
   const [pokemon, setPokemon] = useState<INewPokemon>({
     name: '',
     ability: '',
     photo: '',
   });
 
-  const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    onSubmit(pokemon);
   };
 
   const onImageUpload = (value: FileList | null) => {
@@ -31,13 +33,12 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
     }
   };
 
-  useEffect(() => {
-    console.log(pokemon.photo);
-  }, [pokemon]);
-
   return (
     <div>
-      <form className={clsx(styles.signinForm, className)} onSubmit={onSubmitHandler}>
+      <form
+        className={clsx(styles.signinForm, className)}
+        onSubmit={(event) => event.preventDefault()}
+      >
         <div className={styles.signinForm__title}>Create your own pokemon</div>
         <p className={styles.signinForm__secondaryTitle}>
           Please fill this form to create a pokemon
@@ -45,7 +46,9 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
         <Input
           value={pokemon.name}
           placeholder="Name"
-          onChange={(value: string) => setPokemon((previousState) => ({ ...previousState, value }))}
+          onChange={(value: string) =>
+            setPokemon((previousState) => ({ ...previousState, name: value }))
+          }
         />
         <Input
           value={pokemon.ability}
@@ -55,7 +58,7 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
           }
         />
         <FileInput className={styles.fileInput} onChange={onImageUpload} />
-        <Button text="Add pokemon" />
+        <Button text="Add pokemon" onClick={onSubmitHandler} />
       </form>
     </div>
   );

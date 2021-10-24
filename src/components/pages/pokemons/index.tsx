@@ -2,7 +2,7 @@ import React, { KeyboardEvent, useState, MouseEvent, useEffect } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AddPokemonForm, Button, Footer, Modal, Pokemon, Input } from 'components';
-import { IPokemon, IUser } from 'types';
+import { INewPokemon, IPokemon, IUser } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ type TPokemonsProps = {
   onLoadMore: () => void;
   onExport: () => void;
   user: IUser | null;
+  onCreate: (pokemon: INewPokemon) => void;
 };
 
 const PokemonsPage = ({
@@ -23,6 +24,7 @@ const PokemonsPage = ({
   onLoadMore,
   onExport,
   user,
+  onCreate,
 }: TPokemonsProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [filterStr, setFilterStr] = useState('');
@@ -100,7 +102,7 @@ const PokemonsPage = ({
       <Footer />
       {isOpen && (
         <Modal onEsc={onEsc} onBackdropClick={onBackdropClick}>
-          <AddPokemonForm />
+          <AddPokemonForm onSubmit={onCreate} />
         </Modal>
       )}
     </div>
