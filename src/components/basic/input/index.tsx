@@ -21,7 +21,7 @@ const Input = ({
     setValue(event.target.value);
 
     if (onChange) {
-      onChange(value);
+      onChange(event.target.value);
     }
   };
 

@@ -49,7 +49,7 @@ const Navigation = (): JSX.Element => {
             className={styles.navigation__link}
             activeClassName={styles.navigation__link_active}
           >
-            Sign in
+            Sign in/Sign up
           </NavLink>
         </div>
       </div>
