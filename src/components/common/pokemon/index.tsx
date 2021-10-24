@@ -16,13 +16,12 @@ const Pokemon = ({ pokemon, link }: TPokemonProps): JSX.Element => {
 
   const onClickHandler = () => {
     if (link) {
+      console.log(link);
       history.push(link);
     }
   };
 
   const date = new Intl.DateTimeFormat(locale).format(new Date(pokemon.createdAt || new Date()));
-
-  console.log(date, pokemon.createdAt);
 
   return (
     <div className={styles.pokemon} onClick={onClickHandler}>

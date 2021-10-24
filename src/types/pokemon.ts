@@ -1,5 +1,5 @@
 interface IPokemon {
-  id: string;
+  _id: string;
   name: string;
   ability: string;
   photo: string;

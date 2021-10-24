@@ -1,7 +1,7 @@
-import React, { KeyboardEvent, useState, MouseEvent } from 'react';
+import React, { KeyboardEvent, useState, MouseEvent, useEffect } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { AddPokemonForm, Button, Footer, Modal, Pokemon } from 'components';
+import { AddPokemonForm, Button, Footer, Modal, Pokemon, Input } from 'components';
 import { IPokemon } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
@@ -23,6 +23,7 @@ const PokemonsPage = ({
   onExport,
 }: TPokemonsProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+  const [filterStr, setFilterStr] = useState('');
 
   const onLoadMoreHandler = () => {
     if (onLoadMore) {
@@ -46,10 +47,28 @@ const PokemonsPage = ({
     }
   };
 
+  const onChandleChange = (value: any) => {
+    setFilterStr(value);
+  };
+
+  const getFilteredContacts = () => {
+    if (filterStr === '') {
+      return pokemons;
+    }
+    const filteredPokemos = pokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(filterStr.toLowerCase()),
+    );
+    return filteredPokemos.length === 0 ? pokemons : filteredPokemos;
+  };
+
   return (
     <div>
       <NavigationContainer />
       <main className={clsx('main', styles.main)}>
+        <div className={styles.inputBox}>
+          <h3 className={styles.title}>Find your pokemon</h3>
+          <Input className={styles.input} onChange={onChandleChange} />
+        </div>
         <InfiniteScroll
           loader={<h1 className={styles.main__title}>Loading...</h1>}
           dataLength={pokemons.length}
@@ -65,9 +84,11 @@ const PokemonsPage = ({
               Export
             </Button>
           </div>
-          {pokemons.map((pokemon) => (
-            <Pokemon pokemon={pokemon} link={`${Routes.ALL}/${pokemon.id}`} key={pokemon.id} />
-          ))}
+          {getFilteredContacts().map((pokemon) => {
+            return (
+              <Pokemon pokemon={pokemon} link={`${Routes.ALL}/${pokemon._id}`} key={pokemon._id} />
+            );
+          })}
         </InfiniteScroll>
       </main>
       <Footer />

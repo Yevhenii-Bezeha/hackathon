@@ -7,6 +7,7 @@ type TInputProps = {
   onChange?: (value: string) => void;
   placeholder?: string;
   value?: string;
+  onChandleChange?: (value: string) => void;
 };
 
 const Input = ({

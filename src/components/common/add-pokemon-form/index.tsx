@@ -55,7 +55,7 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
           }
         />
         <FileInput className={styles.fileInput} onChange={onImageUpload} />
-        <Button text="Just do it" />
+        <Button text="Add pokemon" />
       </form>
     </div>
   );
