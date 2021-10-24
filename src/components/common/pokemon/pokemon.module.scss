@@ -48,4 +48,8 @@
     color: var(--darker-color);
     font: 700 48px var(--base-font-family);
   }
+
+  &__data {
+    font: 700 20px var(--base-font-family);
+  }
 }

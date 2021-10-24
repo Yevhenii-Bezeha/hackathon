@@ -12,11 +12,17 @@ type TPokemonProps = {
 const Pokemon = ({ pokemon, link }: TPokemonProps): JSX.Element => {
   const history = useHistory();
 
+  const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+
   const onClickHandler = () => {
     if (link) {
       history.push(link);
     }
   };
+
+  const date = new Intl.DateTimeFormat(locale).format(new Date(pokemon.createdAt || new Date()));
+
+  console.log(date, pokemon.createdAt);
 
   return (
     <div className={styles.pokemon} onClick={onClickHandler}>
@@ -24,6 +30,7 @@ const Pokemon = ({ pokemon, link }: TPokemonProps): JSX.Element => {
       <div className={styles.pokemon__overlay}></div>
       <img src={pokemon.photo} alt={pokemon.name} className={styles.pokemon__image}></img>
       <div className={styles.pokemon__description}>
+        {pokemon.createdAt && <p className={styles.pokemon__data}>{date}</p>}
         <p className={styles.pokemon__name}>{pokemon.name}</p>
       </div>
     </div>
