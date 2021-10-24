@@ -1,8 +1,10 @@
 interface IUser {
-  id: string;
-  login: string;
+  _id: string;
+  email: string;
+  avatar: string;
   token: string;
   name: string;
+  type?: string;
 }
 
 export default IUser;
