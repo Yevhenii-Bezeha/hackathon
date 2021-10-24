@@ -34,6 +34,13 @@ const Navigation = (): JSX.Element => {
           >
             About
           </NavLink>
+          <NavLink
+            to={Routes.ADMIN}
+            className={styles.navigation__link}
+            activeClassName={styles.navigation__link_active}
+          >
+            Admin
+          </NavLink>
         </div>
 
         <div className={styles.navigation__part}>
