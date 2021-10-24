@@ -15,6 +15,7 @@ const Button = ({ className, onClick, children, text }: TButtonProps): JSX.Eleme
       onClick(event);
     }
   };
+
   return (
     <button className={clsx(styles.button, className)} onClick={onClickHandler}>
       {children}

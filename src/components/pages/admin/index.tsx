@@ -1,6 +1,7 @@
-import { AdminItem, Button, Footer, Navigation } from 'components';
+import { AdminItem, Button, Footer } from 'components';
 import styles from './admin.module.scss';
 import React, { useState } from 'react';
+import { NavigationContainer } from 'containers';
 
 const AdminPage = () => {
   const [isUsers, setIsUsers] = useState(true);
@@ -18,7 +19,7 @@ const AdminPage = () => {
 
   return (
     <div className={styles.container}>
-      <Navigation />
+      <NavigationContainer />
       <div className={styles.buttonList}>
         <Button className={styles.button} text="Users" onClick={showUsers} />
         <Button className={styles.button} text="Pokemons" onClick={showPokemons} />

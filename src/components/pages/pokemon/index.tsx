@@ -1,7 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import { IPokemon } from 'types';
-import { Footer, Navigation } from 'components';
+import { Footer } from 'components';
+import { NavigationContainer } from 'containers';
 import styles from './pokemon.module.scss';
 
 type TPokemonProps = {
@@ -11,7 +12,7 @@ type TPokemonProps = {
 const Pokemon = ({ pokemon }: TPokemonProps): JSX.Element => {
   return (
     <div>
-      <Navigation />
+      <NavigationContainer />
       <main className={clsx('main', styles.main)}>
         <div className={clsx('container', styles.main__container)}>
           <div className={styles.main__image}>
