@@ -1,3 +1,3 @@
-const API_ROOT = 'http://localhost:3000/';
+const API_ROOT = 'https://hackathone-back.herokuapp.com/api';
 
 export default API_ROOT;
