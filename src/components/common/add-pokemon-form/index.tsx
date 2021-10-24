@@ -10,15 +10,17 @@ type TSignInFormProps = {
 };
 
 const AddPokemonForm = ({ className, onSubmit }: TSignInFormProps): JSX.Element => {
-  const [pokemon, setPokemon] = useState<INewPokemon>({
+  const initialState = {
     name: '',
     ability: '',
     photo: '',
-  });
+  };
+  const [pokemon, setPokemon] = useState<INewPokemon>(initialState);
 
   const onSubmitHandler = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     onSubmit(pokemon);
+    setPokemon(initialState);
   };
 
   const onImageUpload = (value: FileList | null) => {
