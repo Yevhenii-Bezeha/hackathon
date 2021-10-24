@@ -9,6 +9,7 @@ import {
   HomeContainer,
   NotFoundContainer,
   UserContainer,
+  AdminContainer,
 } from 'containers';
 
 const Router = (): JSX.Element => {
@@ -23,6 +24,9 @@ const Router = (): JSX.Element => {
         </Route>
         <Route path={Routes.ONE} exact>
           <PokemonContainer />
+        </Route>
+        <Route path={Routes.ADMIN} exact>
+          <AdminContainer />
         </Route>
         <Route path={Routes.SIGN_IN} exact>
           <SignInContainer />
