@@ -18,9 +18,6 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
     setPokemonSkills('');
   };
 
-  const addFilePath = (event: any) => {
-    console.log(event);
-  };
 
   return (
     <div>
@@ -39,7 +36,7 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
           placeholder="Skills"
           onChange={(e: any) => setPokemonSkills(e.target?.value)}
         />
-        <FileInput className={styles.fileInput} addFilePath={addFilePath} />
+        <FileInput className={styles.fileInput} />
         <Button text="Just do it" />
       </form>
     </div>

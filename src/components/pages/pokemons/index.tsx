@@ -61,15 +61,12 @@ const PokemonsPage = ({
     return filteredPokemos.length === 0 ? pokemons : filteredPokemos;
   };
 
-  console.log(getFilteredContacts());
-  console.log(pokemons);
-  console.log(filterStr);
   return (
     <div>
       <Navigation />
       <main className={clsx('main', styles.main)}>
         <div className={styles.inputBox}>
-          <h3 className={styles.titel}>Find your pokemon</h3>
+          <h3 className={styles.title}>Find your pokemon</h3>
           <Input className={styles.input} onChange={onChandleChange} />
         </div>
         <InfiniteScroll
