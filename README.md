@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# How to use it for developers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. download the zip-file with the project or clone git repo
+2. run npm start in the consol
+3. use this API 'https://hackathone-back.herokuapp.com/api'
+4. ENDPOINTS
+   GET
+   --'/pokemons' - get all pokemons
+   --'/pokemons:id' -- get one pokemon by id
+   POST
+   --('/api/pokemon',[authJwt.verifyToken], controller.addPokemon)
+   --("/api/comment",[authJwt.verifyToken], controller.addComment))
+   PATHC
+   --("/api/pokemon/:id",[authJwt.verifyToken], controller.editPokemon)
+   DELETE
+   --("/api/pokemon/:id",[authJwt.verifyToken], controller.deletePokemon)
+   --("/api/comment/:id", [authJwt.verifyToken], controller.deleteComment)
+# Overview for users
 
-## Available Scripts
+Welcome to PokemonGo. Here you are a welcome guest. Register, create your own Pokémon, share new abilities with your friends, and leave your comments on their best Pokémon. The time of Pokémon and exploration has just begun!
 
-In the project directory, you can run:
+## Key Topics
 
-### `npm start`
+In the project directory, you can find:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Home page:
+   -general information about the project
+2. Pokemons page.
+   -shows the gallery of all pokemons with general information about them
+3. Sign in
+   -page for authentication
+4. Sign up
+   -page for registration
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Advices
 
-### `npm test`
+1. Open our URL link
+2. Read the general information about the project at Home page using the navigation at the top of the website
+3. Open the Pokemons page using the navigation and scroll down to see the all list of pokemons
+4. Click on your favourite pokepon and read the additional information about it, like abilities
+5. Ok, now you are ready to create your own profile
+6. Go to Sign up page and think about login and parol
+7. Once you know your credentials put them in the inputs at the page
+8. Wait to see the answer from our server to understand everthing is ok
+9. Again we advice you to open the Pokemons page using navigation
+10. You see the button. Click on it and create your own pokemon
+11. If you have created a lot of pokemons and cannot find your favourite one do not worry! Be happy, there is an input search by the name
+12. Ok, you have done a lot of things and ready to rest, just log out and do not worry about everything else, we will take care about your pokemons
+13. Have a nice day :)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Functionality
 
-### `npm run build`
+(implemented or in development)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-- download all pokemons
+-- filter pokemons
+-- create an accaunt
+-- add new pokemons
+-- leave a comments
+-- edit your pokemonts
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Future functionality
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-- admin panel
+-- admin privileges
+-- filter by data
+-- new information about pokemons
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+© 2021 RunDeVu. All Rights Reserved.
