@@ -5,13 +5,18 @@ import clsx from 'clsx';
 
 type TSignInFormProps = {
   className?: string;
+  onChange?: (files: FileList | null) => void;
 };
 
-const FileInput = ({ className }: TSignInFormProps): JSX.Element => {
+const FileInput = ({ className, onChange }: TSignInFormProps): JSX.Element => {
   const [value, setValue] = useState<FileList | null>(null);
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.currentTarget.files);
+
+    if (onChange) {
+      onChange(event.currentTarget.files);
+    }
   };
 
   return (
