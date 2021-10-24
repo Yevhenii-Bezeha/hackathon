@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { KeyboardEvent, useState, MouseEvent } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AddPokemonForm, Button, Footer, Modal, Navigation, Pokemon } from 'components';
@@ -12,9 +12,15 @@ type TPokemonsProps = {
   pokemons: IPokemon[];
   pokemonsNumber: number;
   onLoadMore: () => void;
+  onExport: () => void;
 };
 
-const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps): JSX.Element => {
+const PokemonsPage = ({
+  pokemons,
+  pokemonsNumber,
+  onLoadMore,
+  onExport,
+}: TPokemonsProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const onLoadMoreHandler = () => {
@@ -27,13 +33,13 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
     setIsOpen(true);
   };
 
-  const onEsc = (event: any) => {
+  const onEsc = (event: KeyboardEvent) => {
     if (event.code === 'Escape') {
       setIsOpen(false);
     }
   };
 
-  const onBackdropClick = (event: any) => {
+  const onBackdropClick = (event: MouseEvent<HTMLElement>) => {
     if (event.target === event.currentTarget) {
       setIsOpen(false);
     }
@@ -50,9 +56,12 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
           next={onLoadMoreHandler}
           className={clsx('container', styles.main__container)}
         >
-          <div className={styles.buttonBox} onClick={onClickHandle}>
-            <Button className={styles.button}>
+          <div className={styles.buttonBox}>
+            <Button className={styles.button} onClick={onClickHandle}>
               <FontAwesomeIcon icon={faPlus} />
+            </Button>
+            <Button onClick={onExport} className={styles.exportButton}>
+              Export
             </Button>
           </div>
           {pokemons.map((pokemon) => (
