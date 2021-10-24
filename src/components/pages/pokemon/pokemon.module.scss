@@ -31,13 +31,34 @@
     color: var(--darker-color);
   }
 
+  &__comments {
+    margin-top: 0;
+    font: 500 40px var(--base-font-family);
+    margin-bottom: 30px;
+    color: var(--darker-color);
+  }
+
+  &__comment {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+  }
+
   &__text {
-    p {
-      font: var(--base-font);
-      color: var(--darker-color);
-      line-height: 2;
-      font-size: 25px;
-      text-align: center;
-    }
+    font: var(--base-font);
+    color: var(--darker-color);
+    line-height: 2;
+    font-size: 25px;
+    text-align: center;
+  }
+
+  &__date {
+    margin-left: 20px;
+    padding-top: 30px;
+    font: var(--base-font);
+    color: var(--lighter-color);
+    line-height: 2;
+    font-size: 15px;
+    text-align: center;
   }
 }

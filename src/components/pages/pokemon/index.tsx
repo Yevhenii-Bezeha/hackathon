@@ -8,7 +8,9 @@ type TPokemonProps = {
   pokemon: IPokemon;
 };
 
+
 const Pokemon = ({ pokemon }: TPokemonProps): JSX.Element => {
+
   return (
     <div>
       <Navigation />
@@ -22,6 +24,20 @@ const Pokemon = ({ pokemon }: TPokemonProps): JSX.Element => {
             <div className={styles.main__text}>
               <p>Ability: {pokemon.ability}</p>
             </div>
+          </div>
+          <div>
+            <h3 className={styles.main__comments}>Comments</h3>
+            {pokemon?.comments?.length ?
+              pokemon?.comments.map((comment) => {
+                const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+                const date = new Intl.DateTimeFormat(locale).format(new Date(comment.createdAt || new Date()));
+                return <div className={styles.main__comment} key={comment._id}>
+                  <p className={styles.main__text}>{comment.text}</p>
+                  <p className={styles.main__date}>{date}</p>
+                </div>
+              })
+              :
+              <p>No comments</p>}
           </div>
         </div>
       </main>
