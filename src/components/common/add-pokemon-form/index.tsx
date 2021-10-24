@@ -1,23 +1,24 @@
 import clsx from 'clsx';
 import { Button, FileInput, Input } from 'components';
 import React, { FormEvent, useState } from 'react';
-// import { ICredentials } from 'types';
 import styles from './add-pokemon-form.module.scss';
 
 type TSignInFormProps = {
-  // onSubmit: (credentials: ICredentials) => void;
   className?: string;
 };
 
 const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
-  const [credentials, setCredentials] = useState({
-    name: '',
-    skills: '',
-  });
+  const [pokemonName, setPokemonName] = useState('');
+  const [pokemonSkills, setPokemonSkills] = useState('');
+  const [pokemonPict, setPokemonPict] = useState('');
 
   const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // onSubmit(credentials);
+    
+  };
+
+  const addFilePath = (event: any) => {
+    console.log(event);
   };
 
   return (
@@ -28,20 +29,16 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
           Please fill this form to create a pokemon
         </p>
         <Input
-          value={credentials.name}
+          value={pokemonName}
           placeholder="Name"
-          onChange={(value: string) =>
-            setCredentials((previousState) => ({ ...previousState, login: value }))
-          }
+          onChange={(e: any) => setPokemonName(e.target?.value)}
         />
         <Input
-          value={credentials.skills}
+          value={pokemonSkills}
           placeholder="Skills"
-          // onChange={(value: string) =>
-          //   setCredentials((previousState) => ({ ...previousState, password: value }))
-          // }
+          onChange={(e: any) => setPokemonSkills(e.target?.value)}
         />
-        <FileInput className={ styles.fileInput}/>
+        <FileInput className={styles.fileInput} addFilePath={addFilePath} />
         <Button text="Just do it" />
       </form>
     </div>
