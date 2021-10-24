@@ -38,9 +38,12 @@ const PokemonsContainer = (): JSX.Element => {
     }
   };
 
+  const user = useAppSelector((state) => state.user.item);
+
   return hasFetched ? (
     allPokemons ? (
       <PokemonsPage
+        user={user}
         pokemons={loadedPokemons}
         pokemonsNumber={allPokemons.length}
         onLoadMore={onLoadMore}

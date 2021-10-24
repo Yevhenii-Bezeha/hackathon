@@ -2,7 +2,7 @@ import React, { KeyboardEvent, useState, MouseEvent, useEffect } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AddPokemonForm, Button, Footer, Modal, Pokemon, Input } from 'components';
-import { IPokemon } from 'types';
+import { IPokemon, IUser } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -14,6 +14,7 @@ type TPokemonsProps = {
   pokemonsNumber: number;
   onLoadMore: () => void;
   onExport: () => void;
+  user: IUser | null;
 };
 
 const PokemonsPage = ({
@@ -21,6 +22,7 @@ const PokemonsPage = ({
   pokemonsNumber,
   onLoadMore,
   onExport,
+  user,
 }: TPokemonsProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [filterStr, setFilterStr] = useState('');
@@ -79,9 +81,11 @@ const PokemonsPage = ({
           className={clsx('container', styles.main__container)}
         >
           <div className={styles.buttonBox}>
-            <Button className={styles.button} onClick={onClickHandle}>
-              <FontAwesomeIcon icon={faPlus} />
-            </Button>
+            {user && (
+              <Button className={styles.button} onClick={onClickHandle}>
+                <FontAwesomeIcon icon={faPlus} />
+              </Button>
+            )}
             <Button onClick={onExport} className={styles.exportButton}>
               Export
             </Button>
