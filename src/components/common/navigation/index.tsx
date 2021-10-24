@@ -32,13 +32,6 @@ const Navigation = ({ user }: TNavigationProps): JSX.Element => {
           >
             Pokemons
           </NavLink>
-          <NavLink
-            to={Routes.ABOUT}
-            className={styles.navigation__link}
-            activeClassName={styles.navigation__link_active}
-          >
-            About
-          </NavLink>
           {user && user?.type === 'admin' && (
             <NavLink
               to={Routes.ADMIN}
