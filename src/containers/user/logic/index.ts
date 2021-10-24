@@ -5,7 +5,7 @@ import { IUserState } from './state';
 import initialState from './state';
 
 const reducer = createReducer<IUserState>(initialState, {
-  [actionsTypes.SING_IN]: (state) => {
+  [actionsTypes.SIGN_IN]: (state) => {
     return { ...state, hasFetched: false };
   },
   [actionsTypes.SING_OUT]: (state) => {

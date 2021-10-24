@@ -17,7 +17,7 @@ function* signInWorker() {
 }
 
 function* signInWatcher() {
-  yield takeEvery(actionsTypes.SING_IN, signInWorker);
+  yield takeEvery(actionsTypes.SIGN_IN, signInWorker);
 }
 
 function* saga() {
