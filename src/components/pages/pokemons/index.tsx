@@ -1,12 +1,13 @@
 import React, { KeyboardEvent, useState, MouseEvent } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { AddPokemonForm, Button, Footer, Modal, Navigation, Pokemon } from 'components';
+import { AddPokemonForm, Button, Footer, Modal, Pokemon } from 'components';
 import { IPokemon } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { NavigationContainer } from 'containers';
 
 type TPokemonsProps = {
   pokemons: IPokemon[];
@@ -47,7 +48,7 @@ const PokemonsPage = ({
 
   return (
     <div>
-      <Navigation />
+      <NavigationContainer />
       <main className={clsx('main', styles.main)}>
         <InfiniteScroll
           loader={<h1 className={styles.main__title}>Loading...</h1>}

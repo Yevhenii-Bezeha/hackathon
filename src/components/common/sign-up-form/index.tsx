@@ -2,16 +2,18 @@ import React, { MouseEvent, useState } from 'react';
 import clsx from 'clsx';
 import { Button, Input } from 'components';
 import { ICredentials } from 'types';
-import styles from './signin-form.module.scss';
+import styles from './signup-form.module.scss';
 
 type TSignInFormProps = {
   onSubmit: (credentials: ICredentials) => void;
   className?: string;
 };
 
-const SignInForm = ({ onSubmit, className }: TSignInFormProps): JSX.Element => {
+const SignUpForm = ({ onSubmit, className }: TSignInFormProps): JSX.Element => {
   const [credentials, setCredentials] = useState<ICredentials>({
+    name: '',
     email: '',
+    avatar: '',
     password: '',
   });
 
@@ -21,9 +23,16 @@ const SignInForm = ({ onSubmit, className }: TSignInFormProps): JSX.Element => {
   };
 
   return (
-    <form className={clsx(styles.signinForm, className)}>
-      <div className={styles.signinForm__title}>Sign in</div>
-      <p className={styles.signinForm__secondaryTitle}>Please fill this form to sign up.</p>
+    <form className={clsx(styles.signupForm, className)}>
+      <div className={styles.signupForm__title}>Sign in</div>
+      <p className={styles.signupForm__secondaryTitle}>Please fill this form to sign up.</p>
+      <Input
+        value={credentials.password}
+        placeholder="Name"
+        onChange={(value: string) =>
+          setCredentials((previousState) => ({ ...previousState, name: value }))
+        }
+      />
       <Input
         value={credentials.email}
         placeholder="Email"
@@ -38,9 +47,9 @@ const SignInForm = ({ onSubmit, className }: TSignInFormProps): JSX.Element => {
           setCredentials((previousState) => ({ ...previousState, password: value }))
         }
       />
-      <Button text="Sign in" onClick={onSubmitHandler} />
+      <Button text="Sign up" onClick={onSubmitHandler} />
     </form>
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

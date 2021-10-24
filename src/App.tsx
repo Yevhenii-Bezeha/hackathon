@@ -5,6 +5,7 @@ import { Router } from 'containers';
 import 'styles/index.scss';
 
 const App = (): JSX.Element => {
+
   return (
     <Provider store={store}>
       <Router />

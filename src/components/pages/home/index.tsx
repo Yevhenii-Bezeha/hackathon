@@ -1,12 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Footer, Navigation } from 'components';
+import { Footer } from 'components';
+import { NavigationContainer } from 'containers';
 import styles from './home.module.scss';
 
 const index = () => {
   return (
     <div>
-      <Navigation />
+      <NavigationContainer />
       <main className={clsx('main', styles.main)}>
         <div className={clsx('container', styles.main__container)}>
           <div className={styles.main__image}>{/* <img src={homeImg} alt="Pokemons" /> */}</div>

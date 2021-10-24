@@ -1,21 +1,21 @@
 import React from 'react';
 import clsx from 'clsx';
 import { ICredentials } from 'types';
-import { Footer, SignInForm } from 'components';
-import styles from './sign-in.module.scss';
+import { Footer, SignUpForm } from 'components';
+import styles from './sign-up.module.scss';
 import { NavigationContainer } from 'containers';
 
-type TSignInPageProps = {
-  onSignIn: (credentials: ICredentials) => void;
+type TSignUpPageProps = {
+  onSignUp: (credentials: ICredentials) => void;
 };
 
-const SignInPage = ({ onSignIn }: TSignInPageProps): JSX.Element => {
+const SignUpPage = ({ onSignUp }: TSignUpPageProps): JSX.Element => {
   return (
     <div>
       <NavigationContainer />
       <main className={clsx('main', styles.main)}>
         <div className={clsx('container', styles.main__container)}>
-          <SignInForm onSubmit={onSignIn} className={styles.main__form} />
+          <SignUpForm onSubmit={onSignUp} className={styles.main__form} />
         </div>
       </main>
       <Footer />
@@ -23,4 +23,4 @@ const SignInPage = ({ onSignIn }: TSignInPageProps): JSX.Element => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;

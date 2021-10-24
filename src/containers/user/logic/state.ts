@@ -1,5 +1,8 @@
 import { IUser, IError } from 'types';
 
+const existingUser = localStorage.getItem('user');
+const user = existingUser ? JSON.parse(existingUser) : null;
+
 export interface IUserState {
   item: IUser | null;
   hasFetched: boolean;
@@ -7,7 +10,7 @@ export interface IUserState {
 }
 
 const initialState: IUserState = {
-  item: null,
+  item: user,
   hasFetched: true,
   error: null,
 };

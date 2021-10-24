@@ -5,6 +5,7 @@ const Routes = {
   ABOUT: '/about',
   ADMIN: '/admin',
   SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
   SIGN_OUT: '/sign-out',
   PROFILE: '/profile',
   NOT_FOUND: '/404',

@@ -6,4 +6,6 @@ export { default as SignOutContainer } from './user/sign-out';
 export { default as HomeContainer } from './home';
 export { default as NotFoundContainer } from './not-found';
 export { default as UserContainer } from './user/profile';
+export { default as SignUpContainer } from './user/sign-up';
 export { default as AdminContainer } from './admin';
+export { default as NavigationContainer } from './navigation';

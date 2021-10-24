@@ -1,0 +1,12 @@
+.main {
+  display: grid;
+
+  &__container {
+    height: 100%;
+    display: flex;
+  }
+
+  &__form {
+    margin: auto;
+  }
+}

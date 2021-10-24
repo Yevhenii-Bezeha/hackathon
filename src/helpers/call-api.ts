@@ -1,12 +1,10 @@
 import qs from 'qs';
 import { API_ROOT, HttpMethods } from 'common';
+//import { useAppSelector } from 'store';
 
-type TBody =
-  | {
-      [key: string]: string | number;
-    }
-  | string
-  | number;
+const token = ''; // useAppSelector((state) => state.user.item?.token);
+
+type TBody = any;
 
 type THeader = Headers | string[][] | Record<string, string> | undefined;
 
@@ -35,6 +33,8 @@ const getUrl = ({ endpoint, query }: IRequestArgs): RequestInfo =>
 const getArgs = (args: IRequestArgs): RequestInit => {
   const headers: THeader = {};
   let body: TBody | null = null;
+
+  headers['x-access-token'] = token || '';
 
   if (args.body) {
     if (args.method === 'GET') {

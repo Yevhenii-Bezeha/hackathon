@@ -10,8 +10,7 @@ export type TSignIn = {
   credentials: ICredentials;
 };
 export type TSignUp = {
-  email: ICredentials;
-  password: ICredentials;
+  credentials: ICredentials;
 };
 
 export type TSetUser = {

@@ -4,8 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { Routes } from 'common';
 import { Logo } from 'components';
 import styles from './navigation.module.scss';
+import { IUser } from 'types';
 
-const Navigation = (): JSX.Element => {
+type TNavigationProps = {
+  user: IUser | null;
+};
+
+const Navigation = ({ user }: TNavigationProps): JSX.Element => {
   return (
     <nav className={styles.navigation}>
       <div className={clsx('container', styles.navigation__container)}>
@@ -34,23 +39,41 @@ const Navigation = (): JSX.Element => {
           >
             About
           </NavLink>
-          <NavLink
-            to={Routes.ADMIN}
-            className={styles.navigation__link}
-            activeClassName={styles.navigation__link_active}
-          >
-            Admin
-          </NavLink>
+          {user && user?.type === 'admin' && (
+            <NavLink
+              to={Routes.ADMIN}
+              className={styles.navigation__link}
+              activeClassName={styles.navigation__link_active}
+            >
+              Admin
+            </NavLink>
+          )}
         </div>
 
         <div className={styles.navigation__part}>
-          <NavLink
-            to={Routes.SIGN_IN}
-            className={styles.navigation__link}
-            activeClassName={styles.navigation__link_active}
-          >
-            Sign in
-          </NavLink>
+          {user ? (
+            <NavLink to={Routes.PROFILE} className={styles.navigation__link}>
+              Profile
+            </NavLink>
+          ) : (
+            <>
+              <NavLink
+                to={Routes.SIGN_IN}
+                className={styles.navigation__link}
+                activeClassName={styles.navigation__link_active}
+              >
+                Sign in
+              </NavLink>
+              /
+              <NavLink
+                to={Routes.SIGN_UP}
+                className={styles.navigation__link}
+                activeClassName={styles.navigation__link_active}
+              >
+                Sign up
+              </NavLink>
+            </>
+          )}
         </div>
       </div>
     </nav>
