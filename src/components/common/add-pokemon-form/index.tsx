@@ -10,11 +10,12 @@ type TSignInFormProps = {
 const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
   const [pokemonName, setPokemonName] = useState('');
   const [pokemonSkills, setPokemonSkills] = useState('');
-  const [pokemonPict, setPokemonPict] = useState('');
 
   const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+    console.log(123);
+    setPokemonName('');
+    setPokemonSkills('');
   };
 
   const addFilePath = (event: any) => {

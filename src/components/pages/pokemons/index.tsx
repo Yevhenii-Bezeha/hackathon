@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { AddPokemonForm, Button, Footer, Modal, Navigation, Pokemon } from 'components';
+import { AddPokemonForm, Button, Footer, Input, Modal, Navigation, Pokemon } from 'components';
 import { IPokemon } from 'types';
 import styles from './pokemons.module.scss';
 import { Routes } from 'common';
@@ -16,6 +16,7 @@ type TPokemonsProps = {
 
 const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+  const [filterStr, setFilterStr] = useState('');
 
   const onLoadMoreHandler = () => {
     if (onLoadMore) {
@@ -39,10 +40,31 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
     }
   };
 
+  const onChandleChange = (value: any) => {
+    setFilterStr(value);
+  };
+
+  const getFilteredContacts = () => {
+    if (filterStr === '') {
+      return pokemons;
+    }
+    const filteredPokemos = pokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(filterStr.toLowerCase()),
+    );
+    return filteredPokemos.length === 0 ? pokemons : filteredPokemos;
+  };
+
+  console.log(getFilteredContacts());
+  console.log(pokemons);
+  console.log(filterStr);
   return (
     <div>
       <Navigation />
       <main className={clsx('main', styles.main)}>
+        <div className={styles.inputBox}>
+          <h3 className={styles.titel}>Find your pokemon</h3>
+          <Input className={styles.input} onChange={onChandleChange} />
+        </div>
         <InfiniteScroll
           loader={<h1 className={styles.main__title}>Loading...</h1>}
           dataLength={pokemons.length}
@@ -55,9 +77,11 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
               <FontAwesomeIcon icon={faPlus} />
             </Button>
           </div>
-          {pokemons.map((pokemon) => (
-            <Pokemon pokemon={pokemon} link={`${Routes.ALL}/${pokemon.id}`} key={pokemon.id} />
-          ))}
+          {getFilteredContacts().map((pokemon) => {
+            return (
+              <Pokemon pokemon={pokemon} link={`${Routes.ALL}/${pokemon._id}`} key={pokemon._id} />
+            );
+          })}
         </InfiniteScroll>
       </main>
       <Footer />

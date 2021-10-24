@@ -10,6 +10,8 @@
   &__image {
     border-radius: 10px;
     overflow: hidden;
+    width: 300px;
+    object-fit: contain;
 
     img {
       width: 100%;
@@ -34,6 +36,8 @@
       font: var(--base-font);
       color: var(--darker-color);
       line-height: 2;
+      font-size: 25px;
+      text-align: center;
     }
   }
 }
