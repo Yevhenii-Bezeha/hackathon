@@ -6,10 +6,11 @@ import {
   PokemonsContainer,
   SignInContainer,
   SignOutContainer,
+  SignUpContainer,
   HomeContainer,
   NotFoundContainer,
-  UserContainer,
   AdminContainer,
+  UserContainer,
 } from 'containers';
 
 const Router = (): JSX.Element => {
@@ -31,8 +32,14 @@ const Router = (): JSX.Element => {
         <Route path={Routes.SIGN_IN} exact>
           <SignInContainer />
         </Route>
+        <Route path={Routes.SIGN_UP} exact>
+          <SignUpContainer />
+        </Route>
         <Route path={Routes.SIGN_OUT} exact>
           <SignOutContainer />
+        </Route>
+        <Route path={Routes.PROFILE} exact>
+          <UserContainer />
         </Route>
         <Route path={Routes.NOT_FOUND} exact>
           <NotFoundContainer />
