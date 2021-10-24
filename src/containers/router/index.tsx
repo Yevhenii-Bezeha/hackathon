@@ -8,6 +8,7 @@ import {
   SignOutContainer,
   HomeContainer,
   NotFoundContainer,
+  UserContainer,
 } from 'containers';
 
 const Router = (): JSX.Element => {
@@ -24,7 +25,8 @@ const Router = (): JSX.Element => {
           <PokemonContainer />
         </Route>
         <Route path={Routes.SIGN_IN} exact>
-          <SignInContainer />
+          {/* <SignInContainer /> */}
+          <UserContainer />
         </Route>
         <Route path={Routes.SIGN_OUT} exact>
           <SignOutContainer />

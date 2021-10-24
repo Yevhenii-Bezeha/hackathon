@@ -1,0 +1,14 @@
+@import 'styles/variables';
+
+.button {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: var(--base-font);
+  color: var(--darker-color);
+}
+
+.input {
+  display: none;
+}
