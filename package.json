@@ -73,7 +73,6 @@
     "stylelint-scss": "^3.21.0"
   },
   "lint-staged": {
-    "*.*": "npm run format:fix",
     "*.{ts,tsx}": "npm run jslint:fix",
     "*.{scss,sass}": "npm run stylelint:fix"
   }
