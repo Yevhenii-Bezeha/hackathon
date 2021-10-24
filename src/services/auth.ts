@@ -1,16 +1,18 @@
-import { ApiRoutes } from 'common';
+import { ApiRoutes, HttpMethods } from 'common';
 import { callApi } from 'helpers';
 import { ResponseError } from 'helpers';
 import { ICredentials } from '../types';
 
 class AuthService {
-  static async signUpUser(credentials: ICredentials) {
-    console.log('AuthService.signUpUser, credentials', credentials);
-    const response = await callApi({ endpoint: ApiRoutes.SIGN_UP })
+  static async signUp(credentials: ICredentials) {
+    const response = await callApi({
+      endpoint: ApiRoutes.SIGN_UP,
+      body: credentials,
+      method: HttpMethods.POST,
+    })
       .then((response) => response.json())
       .then((response) => {
-        console.log('response.data', response.data);
-        return response.data
+        return response.data;
       });
 
     if (response.error) {
@@ -20,8 +22,12 @@ class AuthService {
     return response;
   }
 
-  static async signInUser(credentials: ICredentials) {
-    const response = await callApi({ endpoint: ApiRoutes.SIGN_IN })
+  static async signIn(credentials: ICredentials) {
+    const response = await callApi({
+      endpoint: ApiRoutes.SIGN_IN,
+      body: credentials,
+      method: HttpMethods.POST,
+    })
       .then((response) => response.json())
       .then((response) => response.data);
 
@@ -31,7 +37,6 @@ class AuthService {
 
     return response;
   }
-
 }
 
 export default AuthService;
