@@ -3,6 +3,8 @@ import { useAppSelector, useAppDispatch } from 'store';
 import { IPokemon } from 'types';
 import { PokemonsPage, ErrorPage, Loader } from 'components';
 import { getPokemons, incrementPage } from './logic/actions';
+import { createFile } from 'helpers';
+import { EXPORT_FILE_NAME } from 'common';
 
 const PokemonsContainer = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -30,12 +32,19 @@ const PokemonsContainer = (): JSX.Element => {
     }
   };
 
+  const onExport = () => {
+    if (allPokemons) {
+      createFile(JSON.stringify(allPokemons), EXPORT_FILE_NAME);
+    }
+  };
+
   return hasFetched ? (
     allPokemons ? (
       <PokemonsPage
         pokemons={loadedPokemons}
         pokemonsNumber={allPokemons.length}
         onLoadMore={onLoadMore}
+        onExport={onExport}
       />
     ) : (
       <ErrorPage message="Pokemons error." />
