@@ -27,17 +27,17 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
     setIsOpen(true);
   };
 
-  // const onEsc = (event: MouseEvent<HTMLButtonElement>) => {
-  //   if (event.code === 'Escape') {
-  //     setIsOpen(false);
-  //   }
-  // };
+  const onEsc = (event: any) => {
+    if (event.code === 'Escape') {
+      setIsOpen(false);
+    }
+  };
 
-  // const onBackdropClick = (event: MouseEvent<HTMLButtonElement>) => {
-  //   if (event.target === event.currentTarget) {
-  //     setIsOpen(false);
-  //   }
-  // };
+  const onBackdropClick = (event: any) => {
+    if (event.target === event.currentTarget) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <div>
@@ -62,7 +62,7 @@ const PokemonsPage = ({ pokemons, pokemonsNumber, onLoadMore }: TPokemonsProps):
       </main>
       <Footer />
       {isOpen && (
-        <Modal>
+        <Modal onEsc={onEsc} onBackdropClick={onBackdropClick}>
           <AddPokemonForm />
         </Modal>
       )}
