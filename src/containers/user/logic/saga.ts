@@ -4,12 +4,7 @@ import * as actions from './actions';
 import { IUser } from 'types';
 
 const a = () => {
-  return {
-    id: 'string',
-    login: 'string',
-    token: 'string',
-    name: 'string',
-  };
+  throw new Error();
 };
 
 function* signInWorker() {

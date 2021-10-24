@@ -25,8 +25,7 @@ const Router = (): JSX.Element => {
           <PokemonContainer />
         </Route>
         <Route path={Routes.SIGN_IN} exact>
-          {/* <SignInContainer /> */}
-          <UserContainer />
+          <SignInContainer />
         </Route>
         <Route path={Routes.SIGN_OUT} exact>
           <SignOutContainer />
