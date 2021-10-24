@@ -1,6 +1,7 @@
+import React, { FormEvent, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { Button, FileInput, Input } from 'components';
-import React, { FormEvent, useState } from 'react';
+import { INewPokemon } from 'types';
 import styles from './add-pokemon-form.module.scss';
 
 type TSignInFormProps = {
@@ -8,18 +9,31 @@ type TSignInFormProps = {
 };
 
 const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
-  const [pokemonName, setPokemonName] = useState('');
-  const [pokemonSkills, setPokemonSkills] = useState('');
-  const [pokemonPict, setPokemonPict] = useState('');
+  const [pokemon, setPokemon] = useState<INewPokemon>({
+    name: '',
+    ability: '',
+    photo: '',
+  });
 
   const onSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
   };
 
-  const addFilePath = (event: any) => {
-    console.log(event);
+  const onImageUpload = (value: FileList | null) => {
+    const file = value && value[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPokemon((previousState) => ({ ...previousState, photo: reader.result as string }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
+
+  useEffect(() => {
+    console.log(pokemon.photo);
+  }, [pokemon]);
 
   return (
     <div>
@@ -29,16 +43,18 @@ const AddPokemonForm = ({ className }: TSignInFormProps): JSX.Element => {
           Please fill this form to create a pokemon
         </p>
         <Input
-          value={pokemonName}
+          value={pokemon.name}
           placeholder="Name"
-          onChange={(e: any) => setPokemonName(e.target?.value)}
+          onChange={(value: string) => setPokemon((previousState) => ({ ...previousState, value }))}
         />
         <Input
-          value={pokemonSkills}
-          placeholder="Skills"
-          onChange={(e: any) => setPokemonSkills(e.target?.value)}
+          value={pokemon.ability}
+          placeholder="Ability"
+          onChange={(value: string) =>
+            setPokemon((previousState) => ({ ...previousState, ability: value }))
+          }
         />
-        <FileInput className={styles.fileInput} addFilePath={addFilePath} />
+        <FileInput className={styles.fileInput} onChange={onImageUpload} />
         <Button text="Just do it" />
       </form>
     </div>
